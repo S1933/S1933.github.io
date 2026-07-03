@@ -11,7 +11,7 @@
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    if (themeIcon) themeIcon.textContent = theme === 'light' ? '◑' : '◐';
+    if (themeIcon) themeIcon.textContent = theme === 'light' ? '☾' : '☀';
     try { localStorage.setItem(THEME_KEY, theme); } catch (_) {}
   }
 

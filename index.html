@@ -6,54 +6,54 @@
   <meta name="description" content="Portfolio de Jean-Philippe Déïs Nuel — Senior Backend Engineer, AI Agent Trainer. Drupal, Symfony, PHP, TypeScript. Basé à Bordeaux.">
   <meta name="color-scheme" content="dark light">
   <title>Jean-Philippe Déïs Nuel — Senior Backend Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
 </head>
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="#" class="nav-brand">~/jpdeln</a>
+      <a href="#" class="nav-brand">Jean-Philippe Déïs Nuel</a>
       <ul class="nav-links">
-        <li><a href="#about">about</a></li>
-        <li><a href="#experience">xp</a></li>
-        <li><a href="#projects">projets</a></li>
-        <li><a href="#contact">contact</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#experience">Parcours</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li><button id="theme-toggle" class="theme-toggle" aria-label="Basculer le thème"><span class="theme-icon">◐</span></button></li>
       </ul>
     </div>
   </nav>
 
   <header class="hero">
+    <span class="section-num">00</span>
     <div class="hero-content">
-      <div class="hero-avatar"><img src="assets/personal.jpg" alt="Jean-Philippe Déïs Nuel"></div>
-      <p class="hero-prompt"><span class="dollar">$</span> whoami<span class="cursor"></span></p>
-      <h1>Jean-Philippe Déïs Nuel</h1>
-      <p class="tagline">Senior Backend Engineer • AI Agent Trainer</p>
-      <p class="location">Bordeaux, Nouvelle-Aquitaine, France</p>
+      <div class="hero-text">
+        <h1>Jean-Philippe<br>Déïs Nuel</h1>
+        <p class="tagline">Senior Backend Engineer<br>&amp; AI Agent Trainer</p>
+        <p class="location">Bordeaux, France</p>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/personal.jpg" alt="Jean-Philippe Déïs Nuel">
+      </div>
     </div>
   </header>
 
   <main>
     <section id="about">
-      <h2>A propos</h2>
-      <div class="about-content">
-        <p>
-          Développeur backend senior avec plus de 15 ans d'expérience. Spécialisé en Drupal, Symfony
-          et architectures backend scalables. Actuellement chez <strong>OVHcloud</strong>, je construis
-          et maintiens des briques logicielles critiques pour le cloud européen.
-        </p>
-        <p>
-          Passionné par les agents IA : je crée des outils qui augmentent le quotidien des
-          développeurs — <em>Quorum</em>, revue de code par consensus multi-LLM, ou l'automatisation
-          des workflows avec les sub-agents Claude Code. J'explore l'intersection entre backend solide
-          et IA pragmatique.
-        </p>
-        <p>
-          Je parle PHP, Symfony, Drupal, TypeScript, Bash et Linux au quotidien. DevOps, CI/CD,
-          Docker et AWS complètent la stack.<br>
-          <em>Vous voulez échanger sur les agents IA, l'architecture backend ou Drupal ?</em>
-        </p>
-        <div class="skills">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>À propos</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Développeur backend senior avec plus de 15 ans d'expérience. Spécialisé en Drupal, Symfony et architectures backend scalables. Actuellement chez <strong>OVHcloud</strong>, je construis et maintiens des briques logicielles critiques pour le cloud européen.</p>
+          <p>Passionné par les agents IA : je crée des outils qui augmentent le quotidien des développeurs — <em>Quorum</em>, revue de code par consensus multi-LLM, ou l'automatisation des workflows avec les sub-agents Claude Code. J'explore l'intersection entre backend solide et IA pragmatique.</p>
+          <p>Je parle PHP, Symfony, Drupal, TypeScript, Bash et Linux au quotidien. DevOps, CI/CD, Docker et AWS complètent la stack.<br><em>Vous voulez échanger sur les agents IA, l'architecture backend ou Drupal ?</em></p>
+          <p class="about-cta">💬 Demandez-moi : PHP · Symfony · Drupal · Agents IA · DevOps</p>
+        </div>
+        <aside class="about-skills">
           <span class="skill-tag">PHP</span>
           <span class="skill-tag">Symfony</span>
           <span class="skill-tag">Drupal</span>
@@ -67,98 +67,94 @@
           <span class="skill-tag">AWS</span>
           <span class="skill-tag">Docker</span>
           <span class="skill-tag">Lando</span>
-        </div>
-        <p style="margin-top:1.5rem;font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);">💬 Demandez-moi : PHP · Symfony · Drupal · Agents IA · DevOps</p>
+        </aside>
       </div>
     </section>
+
+    <hr class="section-divider">
 
     <section id="experience">
-      <h2>Parcours</h2>
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Software Developer</span>
-            <span class="timeline-company">OVHcloud</span>
-            <span class="timeline-date">2021 – aujourd'hui</span>
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Parcours</h2>
+      </div>
+      <div class="exp-list">
+        <article class="exp-item">
+          <h3>Software Developer</h3>
+          <div class="exp-meta">
+            <span class="exp-company">OVHcloud</span>
+            <span class="exp-date">2021 – aujourd'hui</span>
           </div>
-          <p class="timeline-desc">Développement et maintenance de briques logicielles critiques sur la plateforme cloud.</p>
-          <p class="timeline-detail">Bash, Linux, PHP, Symfony, Drupal, Docker, CI/CD, architecture</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Software Developer</span>
-            <span class="timeline-company">GUARANÍ</span>
-            <span class="timeline-date">2020 – 2021</span>
+          <p class="exp-desc">Développement et maintenance de briques logicielles critiques sur la plateforme cloud.</p>
+          <p class="exp-detail">Bash, Linux, PHP, Symfony, Drupal, Docker, CI/CD, architecture</p>
+        </article>
+        <article class="exp-item">
+          <h3>Software Developer</h3>
+          <div class="exp-meta">
+            <span class="exp-company">GUARANÍ</span>
+            <span class="exp-date">2020 – 2021</span>
           </div>
-          <p class="timeline-desc">Mission en régie chez Atixnet. Mise en place d'une usine à sites Drupal sur AWS Elastic Beanstalk.</p>
-          <p class="timeline-detail">CI/CD avec GitLab CI, scripts de synchronisation Drupal, formations internes (Git, Docker, Drupal, AWS), développement Symfony 4.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Software Developer</span>
-            <span class="timeline-company">Smile</span>
-            <span class="timeline-date">2018 – 2020</span>
+          <p class="exp-desc">Mission en régie chez Atixnet. Mise en place d'une usine à sites Drupal sur AWS Elastic Beanstalk.</p>
+          <p class="exp-detail">CI/CD avec GitLab CI, scripts de synchronisation Drupal, formations internes (Git, Docker, Drupal, AWS), développement Symfony 4.</p>
+        </article>
+        <article class="exp-item">
+          <h3>Software Developer</h3>
+          <div class="exp-meta">
+            <span class="exp-company">Smile</span>
+            <span class="exp-date">2018 – 2020</span>
           </div>
-          <p class="timeline-desc">Ateliers de conception, spécifications techniques, audits et accompagnement d'équipes de développement.</p>
-          <p class="timeline-detail">Références : keolis.com, mitsubishielectric.fr, happ-e.fr, ecophytopic.fr — Drupal, PHP, Linux, Bash.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Software Developer</span>
-            <span class="timeline-company">mediacrossing</span>
-            <span class="timeline-date">2016 – 2018</span>
+          <p class="exp-desc">Ateliers de conception, spécifications techniques, audits et accompagnement d'équipes de développement.</p>
+          <p class="exp-detail">Références : keolis.com, mitsubishielectric.fr, happ-e.fr, ecophytopic.fr — Drupal, PHP, Linux, Bash.</p>
+        </article>
+        <article class="exp-item">
+          <h3>Software Developer</h3>
+          <div class="exp-meta">
+            <span class="exp-company">mediacrossing</span>
+            <span class="exp-date">2016 – 2018</span>
           </div>
-          <p class="timeline-desc">Analyse du besoin, conception Drupal, mises en production et maintenance évolutive de projets web.</p>
-          <p class="timeline-detail">Références : cidj.com, siredwards.fr — PHP, Drupal, Linux, Bash.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Software Developer</span>
-            <span class="timeline-company">MMDev</span>
-            <span class="timeline-date">2011 – 2016</span>
+          <p class="exp-desc">Analyse du besoin, conception Drupal, mises en production et maintenance évolutive de projets web.</p>
+          <p class="exp-detail">Références : cidj.com, siredwards.fr — PHP, Drupal, Linux, Bash.</p>
+        </article>
+        <article class="exp-item">
+          <h3>Software Developer</h3>
+          <div class="exp-meta">
+            <span class="exp-company">MMDev</span>
+            <span class="exp-date">2011 – 2016</span>
           </div>
-          <p class="timeline-desc">Développeur back-end PHP sur e-sante.fr (5M+ visiteurs/mois). Migration Drupal 6 → 8.</p>
-          <p class="timeline-detail">Drupal, Drupal Commerce, cahiers des charges, spécifications, audit SEO.</p>
-        </div>
-
+          <p class="exp-desc">Développeur back-end PHP sur e-sante.fr (5M+ visiteurs/mois). Migration Drupal 6 → 8.</p>
+          <p class="exp-detail">Drupal, Drupal Commerce, cahiers des charges, spécifications, audit SEO.</p>
+        </article>
       </div>
     </section>
 
+    <hr class="section-divider">
+
     <section id="projects">
-      <h2>Projets</h2>
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Projets</h2>
+      </div>
       <div id="projects-grid" class="projects-grid"></div>
     </section>
 
+    <hr class="section-divider">
+
     <section id="contact">
-      <h2>Contact</h2>
-      <p style="color:var(--text-muted);max-width:60ch;">Je suis toujours ouvert aux échanges sur le développement, l'IA, les outils open source et les nouvelles opportunités.</p>
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Contact</h2>
+      </div>
+      <p class="contact-intro">Je suis toujours ouvert aux échanges sur le développement, l'IA, les outils open source et les nouvelles opportunités.</p>
       <div class="contact-links">
-        <a href="https://github.com/S1933" class="contact-link" rel="noopener">
-          <span>▸</span> github.com/S1933
-        </a>
-        <a href="https://www.linkedin.com/in/jpdn" class="contact-link" rel="noopener">
-          <span>▸</span> LinkedIn
-        </a>
-        <a href="https://www.drupal.org/u/s1933" class="contact-link" rel="noopener">
-          <span>▸</span> drupal.org/u/s1933
-        </a>
+        <a href="https://github.com/S1933" class="contact-link" rel="noopener">github.com/S1933</a>
+        <a href="https://www.linkedin.com/in/jpdn" class="contact-link" rel="noopener">LinkedIn</a>
+        <a href="https://www.drupal.org/u/s1933" class="contact-link" rel="noopener">drupal.org/u/s1933</a>
       </div>
     </section>
   </main>
 
   <footer>
     <p>© 2026 Jean-Philippe Déïs Nuel</p>
-    <p style="margin-top:0.3rem;font-size:0.75rem;">$ exit 0</p>
   </footer>
 
   <script src="assets/js/main.js"></script>
