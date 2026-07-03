@@ -1,41 +1,51 @@
 # Copilot Instructions for S1933.github.io
 
-This repository contains a GitHub Pages website with static HTML files.
+Portfolio personnel de Jean-Philippe Déïs Nuel — Markdown Engineer. Site statique hébergé sur GitHub Pages.
 
 ## Project Overview
 
-- This is a static website hosted on GitHub Pages
-- The site uses plain HTML without any build process or framework
-- The main entry point is `index.html`
+- Static GitHub Pages site, zero build, no framework, no npm
+- Single page (`index.html`) + external CSS + JS
+- Content language: **French**
+- Theme: terminal-flavored, dark/light toggle (persisted in `localStorage`)
+
+## File Structure
+
+```
+index.html           → Entry point, semantic HTML5
+assets/css/style.css  → All styles, CSS custom properties for theming
+assets/js/main.js     → Theme toggle, GitHub API fetch, scroll-spy, rate-limit fallback
+.github/copilot-instructions.md
+```
 
 ## Coding Guidelines
 
-### HTML Files
+### HTML
+- Valid HTML5, semantic elements (`<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`)
+- `lang="fr"` on `<html>`
+- `meta viewport`, `meta description`, `color-scheme: dark light`
+- Content in French; no placeholder/Lorem ipsum
+- No inline `<style>` or `<script>` blocks
 
-- Use valid HTML5 syntax with proper doctype declaration (`<!DOCTYPE html>`)
-- Include appropriate meta tags for charset (`UTF-8`) and viewport settings
-- Keep HTML files well-structured with proper indentation
-- Use semantic HTML elements where appropriate (`<header>`, `<main>`, `<footer>`, `<nav>`, `<article>`, `<section>`)
+### CSS
+- Custom properties in `:root` for theming
+- `[data-theme="light"]` override block for light theme
+- Monospace for headings/labels (`--font-mono`), sans-serif for body (`--font-sans`)
+- `prefers-reduced-motion` respected
+- No preprocessor, no utility framework
 
-### File Naming
+### JS
+- Vanilla JS, IIFE-wrapped, `'use strict'`
+- Theme toggle persists to `localStorage`, respects `prefers-color-scheme` on first visit
+- GitHub API fetch with 1h `localStorage` cache and hardcoded featured fallback
+- `IntersectionObserver` for scroll-spy nav
+- No external dependencies
 
-- Use lowercase letters for file names
-- Use hyphens (`-`) to separate words in file names (e.g., `about-us.html`)
-- Keep file names descriptive and concise
+## Best Practices
 
-### Best Practices
-
-- Ensure all HTML files are properly formatted and indented
-- Add descriptive `<title>` tags to all pages
-- Include alt attributes for all images
-- Test pages in a browser before committing changes
-- Keep the codebase simple and maintainable
-
-## Testing
-
-Since this is a static HTML website, verify changes by:
-
-1. Using a local server for accurate testing (e.g., `python -m http.server` or VS Code Live Server extension)
-2. Checking for valid HTML syntax
-3. Ensuring all links work correctly
-4. Testing responsive behavior on different screen sizes
+- Test with `python3 -m http.server 8000` before committing
+- Validate dark/light toggle persists across page loads
+- Verify mobile layout at 375px
+- Ensure `prefers-reduced-motion` disables animations
+- All external links use `rel="noopener"`
+- Keep diffs minimal — touch only what's needed
