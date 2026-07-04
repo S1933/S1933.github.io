@@ -2,8 +2,6 @@
   'use strict';
 
   const THEME_KEY = 'portfolio-theme';
-  const REPOS_CACHE_KEY = 'portfolio-repos';
-  const CACHE_TTL = 3600000; // 1h
 
   /* ── Theme toggle ── */
   const toggleBtn = document.getElementById('theme-toggle');
@@ -88,11 +86,9 @@
     return a;
   }
 
-  function createSkeleton() {
-    const div = document.createElement('div');
-    div.className = 'loading-skeleton';
-    div.innerHTML = '<div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line"></div>';
-    return div;
+  function renderCurated() {
+    projectsContainer.innerHTML = '';
+    Object.values(FEATURED).forEach((repo) => projectsContainer.appendChild(createCard(repo)));
   }
 
   function escapeHtml(str) {
@@ -100,68 +96,5 @@
     return str.replace(/[&<>"']/g, (c) => map[c]);
   }
 
-  function showNote(text) {
-    const p = document.createElement('p');
-    p.className = 'api-note';
-    p.textContent = text;
-    projectsContainer.appendChild(p);
-  }
-
-  function renderRepos(repos) {
-    projectsContainer.innerHTML = '';
-
-    const featured = Object.values(FEATURED).filter((f) => !repos.some((r) => r.name === f.name));
-    const combined = [...featured, ...repos];
-
-    if (combined.length === 0) {
-      projectsContainer.innerHTML = '<p style="color:var(--text-muted);text-align:center;grid-column:1/-1;">Aucun projet à afficher pour le moment.</p>';
-      return;
-    }
-
-    combined.forEach((repo) => projectsContainer.appendChild(createCard(repo)));
-  }
-
-  function renderFallback() {
-    projectsContainer.innerHTML = '';
-    Object.values(FEATURED).forEach((repo) => projectsContainer.appendChild(createCard(repo)));
-    showNote('Données issues du cache local — l\'API GitHub est temporairement indisponible.');
-  }
-
-  async function fetchRepos() {
-    // Show skeletons
-    projectsContainer.innerHTML = '';
-    for (let i = 0; i < 4; i++) projectsContainer.appendChild(createSkeleton());
-
-    try {
-      const res = await fetch('https://api.github.com/users/S1933/repos?sort=stars&per_page=50&direction=desc');
-      if (!res.ok) throw new Error('API error');
-
-      const repos = await res.json();
-      const filtered = repos
-        .filter((r) => !r.fork && r.name !== 'S1933')
-        .filter((r) => r.name !== 'S1933.github.io')
-        .slice(0, 6);
-
-      // Cache
-      try {
-        localStorage.setItem(REPOS_CACHE_KEY, JSON.stringify({ ts: Date.now(), data: filtered }));
-      } catch (_) {}
-
-      renderRepos(filtered);
-    } catch (_) {
-      // Try cache
-      try {
-        const cached = JSON.parse(localStorage.getItem(REPOS_CACHE_KEY));
-        if (cached && Date.now() - cached.ts < CACHE_TTL) {
-          renderRepos(cached.data);
-          showNote('Données du cache local (' + new Date(cached.ts).toLocaleDateString('fr-FR') + ').');
-          return;
-        }
-      } catch (__) {}
-
-      renderFallback();
-    }
-  }
-
-  if (projectsContainer) fetchRepos();
+  if (projectsContainer) renderCurated();
 })();
