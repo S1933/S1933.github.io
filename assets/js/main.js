@@ -186,6 +186,7 @@
 
   function renderSkillFilters() {
     if (!skillsFilters) return;
+    skillsFilters.innerHTML = '';
     const counts = {};
     SKILLS.forEach((s) => { counts[s.role] = (counts[s.role] || 0) + 1; });
     const all = document.createElement('button');
