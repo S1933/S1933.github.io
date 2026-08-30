@@ -9,7 +9,6 @@
   --accent: #c8553d;
   --accent-hover: #d4664f;
   --shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
   --radius: 8px;
@@ -42,7 +41,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; }
+h1, h2, h3 { font-family: var(--font-mono); font-weight: 600; }
 a { color: inherit; }
 
 /* ── Navigation ── */
@@ -72,7 +71,7 @@ nav {
 }
 
 .nav-brand {
-  font-family: var(--font-serif);
+  font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 600;
   color: var(--text);
@@ -132,7 +131,7 @@ nav {
   position: absolute;
   top: 6rem;
   left: 2rem;
-  font-family: var(--font-serif);
+  font-family: var(--font-mono);
   font-size: 8rem;
   font-weight: 400;
   color: var(--border);
@@ -150,10 +149,10 @@ nav {
 }
 
 .hero-text h1 {
-  font-size: 4.5rem;
+  font-size: 3.4rem;
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--text);
   margin-bottom: 1.5rem;
 }
@@ -201,7 +200,7 @@ section {
 }
 
 .section-header .section-num {
-  font-family: var(--font-serif);
+  font-family: var(--font-mono);
   font-size: 3.5rem;
   font-weight: 400;
   color: var(--border);
@@ -210,8 +209,8 @@ section {
 }
 
 section h2 {
-  font-size: 2.2rem;
-  line-height: 1.1;
+  font-size: 1.9rem;
+  line-height: 1.15;
   color: var(--text);
 }
 
@@ -553,7 +552,7 @@ footer {
     gap: 2rem;
     text-align: center;
   }
-  .hero-text h1 { font-size: 2.8rem; }
+  .hero-text h1 { font-size: 2.4rem; }
   .hero-photo img { width: 140px; height: 140px; }
 
   section { padding: 4rem 1.5rem; }
