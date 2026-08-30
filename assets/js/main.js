@@ -39,19 +39,43 @@
   /* ── Scroll-spy ── */
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('[data-spy]');
+  const navCurrent = document.getElementById('nav-current');
 
-  if (sections.length && navLinks.length) {
+  function setNavCurrent(id) {
+    if (!navCurrent) return;
+    if (id === 'home') {
+      navCurrent.textContent = '~';
+      navCurrent.setAttribute('href', '#top');
+    } else {
+      navCurrent.textContent = './' + id;
+      navCurrent.setAttribute('href', '#' + id);
+    }
+  }
+
+  if (sections.length) {
+    // track which section is currently in view
+    let activeId = 'home';
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          activeId = entry.target.id;
+          setNavCurrent(activeId);
           navLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+            link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
           });
         }
       });
     }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
 
     sections.forEach((s) => observer.observe(s));
+
+    // When scrolled back to the top (hero), show the home prompt.
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < window.innerHeight * 0.3 && activeId !== 'home') {
+        activeId = 'home';
+        setNavCurrent('home');
+      }
+    }, { passive: true });
   }
 
   /* ── GitHub repos ── */
