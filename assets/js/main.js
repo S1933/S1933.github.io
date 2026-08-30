@@ -14,7 +14,7 @@
   }
 
   function getSystemTheme() {
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    return 'dark'; // terminal aesthetic: dark by default, lite mode via toggle
   }
 
   let currentTheme = (() => {
