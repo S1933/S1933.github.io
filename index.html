@@ -8,21 +8,60 @@
   <title>Jean-Philippe Déïs Nuel — Senior Backend Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260830b">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260830c">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
 </head>
 <body>
-  <header class="hero">
-    <span class="section-num">00</span>
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>Jean-Philippe<br>Déïs Nuel</h1>
-        <p class="tagline">Senior Backend Engineer<br>&amp; AI Agent Trainer</p>
-        <p class="location">Bordeaux, France</p>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top"><span class="prompt-dollar">$</span> jp@dev:~$</a>
+      <ul class="nav-links">
+        <li><a href="#about" data-spy>./a-propos</a></li>
+        <li><a href="#experience" data-spy>./parcours</a></li>
+        <li><a href="#projects" data-spy>./projets</a></li>
+        <li><a href="#skills" data-spy>./skills</a></li>
+        <li><a href="#contact" data-spy>./contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <span class="kbd">Ctrl K</span>
+        <button id="theme-toggle" class="theme-toggle" title="Lite mode"><span class="theme-icon">☀</span></button>
       </div>
-      <div class="hero-photo">
-        <img src="assets/personal.jpg" alt="Jean-Philippe Déïs Nuel">
+    </div>
+  </nav>
+
+  <aside class="side-map" aria-label="Navigation">
+    <a href="#about" data-spy>about</a>
+    <a href="#experience" data-spy>experience</a>
+    <a href="#projects" data-spy>projects</a>
+    <a href="#skills" data-spy>skills</a>
+    <a href="#contact" data-spy>contact</a>
+  </aside>
+  <div class="side-log" aria-hidden="true"><span>&gt;</span> booting...<br><span>&gt;</span> entering /home</div>
+
+  <header class="hero" id="top">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span class="terminal-title">jp@dev: ~</span>
+      </div>
+      <div class="terminal-body">
+        <p class="cmd"><span class="prompt">$</span> <span class="cmd-name">whoami</span></p>
+        <h1 class="terminal-name">Jean-Philippe<br>Déïs Nuel</h1>
+        <p class="cmd"><span class="prompt">$</span> <span class="cmd-name">cat</span> role.txt</p>
+        <p class="out">Senior Backend Engineer &amp; AI Agent Trainer <span class="highlight">[FR]</span></p>
+        <p class="cmd"><span class="prompt">$</span> <span class="cmd-name">cat</span> location.txt</p>
+        <p class="out">Bordeaux, France<span class="cursor"> █</span></p>
+        <div class="hero-photo photo-inline">
+          <img src="assets/personal.jpg" alt="Jean-Philippe Déïs Nuel">
+          <span class="out">$ uptime → <span class="highlight">15+ ans en backend</span></span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
       </div>
     </div>
   </header>
@@ -30,17 +69,17 @@
   <main>
     <section id="about">
       <div class="section-header">
-        <span class="section-num">01</span>
-        <h2>À propos</h2>
+        <span class="shell">$</span>
+        <h2>a-propos</h2>
       </div>
       <div class="about-grid">
         <div class="about-text">
-          <p>Développeur backend senior avec plus de 15 ans d'expérience. Spécialisé en Drupal, Symfony et architectures backend scalables. Actuellement chez <strong>OVHcloud</strong>, je construis et maintiens des briques logicielles critiques pour le cloud européen.</p>
-          <p>Passionné par les agents IA : je crée des outils qui augmentent le quotidien des développeurs — <em>Quorum</em>, revue de code par consensus multi-LLM, ou l'automatisation des workflows avec les sub-agents Claude Code. J'explore l'intersection entre backend solide et IA pragmatique.</p>
-          <p>Je parle PHP, Symfony, Drupal, TypeScript, Bash et Linux au quotidien. DevOps, CI/CD, Docker et AWS complètent la stack.<br><em>Vous voulez échanger sur les agents IA, l'architecture backend ou Drupal ?</em></p>
-          <p class="about-cta">💬 Demandez-moi : PHP · Symfony · Drupal · Agents IA · DevOps</p>
+          <p><strong>cat bio.md</strong> — Développeur backend senior avec plus de 15 ans d'expérience. Spécialisé en <span class="accent-word">Drupal</span>, <span class="accent-word">Symfony</span> et architectures backend scalables. Actuellement chez <strong>OVHcloud</strong>, je construis et maintiens des briques logicielles critiques pour le cloud européen.</p>
+          <p>Passionné par les agents IA : je crée des outils qui augmentent le quotidien des développeurs — <span class="accent-word">Quorum</span>, revue de code par consensus multi-LLM, ou l'automatisation des workflows avec les sub-agents Claude Code. J'explore l'intersection entre backend solide et IA pragmatique.</p>
+          <p>Je parle PHP, Symfony, Drupal, TypeScript, Bash et Linux au quotidien. DevOps, CI/CD, Docker et AWS complètent la stack.</p>
+          <p class="about-cta"><span class="prompt">$</span> Demandez-moi : PHP · Symfony · Drupal · Agents IA · DevOps</p>
         </div>
-        <aside class="about-skills">
+        <aside class="about-skills" aria-label="Compétences">
           <span class="skill-tag">PHP</span>
           <span class="skill-tag">Symfony</span>
           <span class="skill-tag">Drupal</span>
@@ -62,8 +101,8 @@
 
     <section id="experience">
       <div class="section-header">
-        <span class="section-num">02</span>
-        <h2>Parcours</h2>
+        <span class="shell">$</span>
+        <h2>parcours</h2>
       </div>
       <div class="exp-list">
         <article class="exp-item">
@@ -118,8 +157,8 @@
 
     <section id="projects">
       <div class="section-header">
-        <span class="section-num">03</span>
-        <h2>Projets</h2>
+        <span class="shell">$</span>
+        <h2>projets</h2>
       </div>
       <div id="projects-grid" class="projects-grid"></div>
     </section>
@@ -128,10 +167,10 @@
 
     <section id="skills">
       <div class="section-header">
-        <span class="section-num">04</span>
-        <h2>Skills agents</h2>
+        <span class="shell">$</span>
+        <h2>skills</h2>
       </div>
-      <p class="skills-intro">Ma stack de compétences pour les agents IA — 30 skills installés depuis <a href="https://skills.sh/" rel="noopener" class="inline-link">skills.sh</a>, portés par <a href="https://github.com/mattpocock/skills" rel="noopener" class="inline-link">Matt Pocock</a> et <a href="https://github.com/obra/superpowers" rel="noopener" class="inline-link">Superpowers</a>. Manifeste versionné dans <a href="https://github.com/S1933/skills" rel="noopener" class="inline-link">S1933/skills</a>.</p>
+      <p class="skills-intro"><span class="accent-word">$ ls ~/skills</span> — Ma stack de compétences pour les agents IA : 30 skills installés depuis <a href="https://skills.sh/" rel="noopener" class="inline-link">skills.sh</a>, portés par <a href="https://github.com/mattpocock/skills" rel="noopener" class="inline-link">Matt Pocock</a> et <a href="https://github.com/obra/superpowers" rel="noopener" class="inline-link">Superpowers</a>. Manifeste versionné dans <a href="https://github.com/S1933/skills" rel="noopener" class="inline-link">S1933/skills</a>.</p>
       <div id="skills-filters" class="skills-filters" role="group" aria-label="Filtrer par rôle"></div>
       <div id="skills-grid" class="skills-grid"></div>
     </section>
@@ -140,8 +179,8 @@
 
     <section id="contact">
       <div class="section-header">
-        <span class="section-num">05</span>
-        <h2>Contact</h2>
+        <span class="shell">$</span>
+        <h2>contact</h2>
       </div>
       <p class="contact-intro">Je suis toujours ouvert aux échanges sur le développement, l'IA, les outils open source et les nouvelles opportunités.</p>
       <div class="contact-links">
@@ -149,11 +188,20 @@
         <a href="https://www.drupal.org/u/s1933" class="contact-link" rel="noopener">Drupal</a>
         <a href="https://github.com/S1933" class="contact-link" rel="noopener">Github</a>
       </div>
+      <div class="contact-email">
+        <span class="prompt">$</span> <span>mail me:</span> <a href="mailto:jeanphilippenuel@gmail.com">jeanphilippenuel@gmail.com</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Jean-Philippe Déïs Nuel</p>
+    <div class="footer-inner">
+      <p class="footer-cmd"><span class="prompt">$</span> echo "Built with <span class="heart">♥</span> by Jean-Philippe"</p>
+      <div class="footer-meta">
+        <span class="footer-copyright">© 2026 Jean-Philippe Déïs Nuel</span>
+        <span>Bordeaux, FR · <span class="cursor">█</span></span>
+      </div>
+    </div>
   </footer>
 
   <script src="assets/js/main.js?v=20260830"></script>

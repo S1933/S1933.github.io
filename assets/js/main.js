@@ -38,7 +38,7 @@
 
   /* ── Scroll-spy ── */
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const navLinks = document.querySelectorAll('[data-spy]');
 
   if (sections.length && navLinks.length) {
     const observer = new IntersectionObserver((entries) => {
