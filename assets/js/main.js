@@ -36,46 +36,47 @@
     } catch (_) {}
   });
 
-  /* ── Scroll-spy ── */
+  /* ── Scroll-spy (geometric: last section whose top crosses 45% of the viewport) ── */
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('[data-spy]');
   const navCurrent = document.getElementById('nav-current');
+  let activeId = 'home';
 
-  function setNavCurrent(id) {
-    if (!navCurrent) return;
-    if (id === 'home') {
-      navCurrent.textContent = '~';
-      navCurrent.setAttribute('href', '#top');
-    } else {
-      navCurrent.textContent = './' + id;
-      navCurrent.setAttribute('href', '#' + id);
+  function setActive(id) {
+    if (id === activeId) return;
+    activeId = id;
+    if (navCurrent) {
+      if (id === 'home') {
+        navCurrent.textContent = '~';
+        navCurrent.setAttribute('href', '#top');
+      } else {
+        navCurrent.textContent = './' + id;
+        navCurrent.setAttribute('href', '#' + id);
+      }
     }
+    navLinks.forEach((link) => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+    });
   }
 
-  if (sections.length) {
-    // track which section is currently in view
-    let activeId = 'home';
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          activeId = entry.target.id;
-          setNavCurrent(activeId);
-          navLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
-          });
-        }
-      });
-    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+  function spy() {
+    const vh = window.innerHeight || 1;
+    if (window.scrollY < vh * 0.25) { setActive('home'); return; }
+    let current = 'home';
+    sections.forEach((s) => {
+      if (s.getBoundingClientRect().top <= vh * 0.45) current = s.id;
+    });
+    if (current === 'home' && activeId !== 'home') {
+      // between sections: keep an explicit label for the last known one
+      current = sections[0] ? sections[0].id : 'home';
+    }
+    setActive(current);
+  }
 
-    sections.forEach((s) => observer.observe(s));
-
-    // When scrolled back to the top (hero), show the home prompt.
-    window.addEventListener('scroll', () => {
-      if (window.scrollY < window.innerHeight * 0.3 && activeId !== 'home') {
-        activeId = 'home';
-        setNavCurrent('home');
-      }
-    }, { passive: true });
+  if (sections.length && navCurrent) {
+    window.addEventListener('scroll', spy, { passive: true });
+    window.addEventListener('resize', spy, { passive: true });
+    spy();
   }
 
   /* ── GitHub repos ── */
