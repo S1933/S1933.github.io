@@ -402,6 +402,92 @@ section h2 {
   grid-column: 1 / -1;
 }
 
+/* ── Skills agents ── */
+.skills-intro {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 70ch;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+.inline-link { color: var(--accent); }
+
+.skills-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.skill-filter {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+.skill-filter:hover { border-color: var(--accent); color: var(--text); }
+.skill-filter.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.skill-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+.skill-card-head { display: flex; align-items: center; }
+.skill-role {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid;
+  letter-spacing: 0.02em;
+}
+.skill-name {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0;
+}
+.skill-desc {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+.skill-meta { display: flex; align-items: center; }
+.skill-owner {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
 /* ── Contact ── */
 .contact-intro {
   font-size: 1.1rem;
@@ -490,6 +576,8 @@ footer {
   .project-card:first-child {
     grid-column: span 1;
   }
+
+  .skills-grid { grid-template-columns: 1fr; }
 }
 
 /* ── Reduced motion ── */
