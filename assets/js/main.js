@@ -79,24 +79,24 @@
     spy();
   }
 
-  /* ── GitHub repos ── */
+  /* ── GitHub repos (live, top 6 by stars, with 24h cache) ── */
   const projectsContainer = document.getElementById('projects-grid');
 
-  const FEATURED = {
-    quorum: {
-      name: 'quorum',
-      description: 'Outil de revue de code par consensus multi-LLM. Un diff Git envoyé à plusieurs modèles (Claude, Gemini, Codex, Ollama…) — seuls les retours convergents sont remontés. TypeScript, Bun.',
-      language: 'TypeScript',
-      stargazers_count: 2,
-      html_url: 'https://github.com/S1933/quorum',
-      featured: true
-    }
-  };
+  const PINNED_SLUGS = ['quorum']; // badges "★ phare"
+  const CACHE_KEY = 'portfolio:gh-repos';
+  const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+  const TOP_N = 6;
+
+  function escapeHtml(str) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+    return String(str == null ? '' : str).replace(/[&<>"']/g, (c) => map[c]);
+  }
 
   function createCard(repo) {
     const a = document.createElement('a');
     a.href = repo.html_url;
     a.className = 'project-card';
+    a.target = '_blank';
     a.rel = 'noopener';
 
     let inner = '';
@@ -111,17 +111,69 @@
     return a;
   }
 
-  function renderCurated() {
+  function renderRepos(repos) {
+    if (!projectsContainer) return;
     projectsContainer.innerHTML = '';
-    Object.values(FEATURED).forEach((repo) => projectsContainer.appendChild(createCard(repo)));
+    if (!repos.length) {
+      projectsContainer.innerHTML = '<p class="projects-empty">Aucun projet à afficher.</p>';
+      return;
+    }
+    repos.forEach((repo) => projectsContainer.appendChild(createCard(repo)));
   }
 
-  function escapeHtml(str) {
-    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
-    return str.replace(/[&<>"']/g, (c) => map[c]);
+  function readCache() {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const { ts, data } = JSON.parse(raw);
+      if (Date.now() - ts > CACHE_TTL_MS) return null;
+      return data;
+    } catch (_) { return null; }
   }
 
-  if (projectsContainer) renderCurated();
+  function writeCache(repos) {
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data: repos })); } catch (_) {}
+  }
+
+  async function loadProjects() {
+    if (!projectsContainer) return;
+    const cached = readCache();
+    if (cached) { renderRepos(cached); return; }
+
+    try {
+      const res = await fetch('https://api.github.com/users/S1933/repos?per_page=100&type=owner&sort=updated', {
+        headers: { 'Accept': 'application/vnd.github+json' }
+      });
+      if (!res.ok) throw new Error('GitHub API ' + res.status);
+      const data = await res.json();
+      const repos = data
+        .filter((r) => !r.fork && !r.archived)
+        .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at)))
+        .slice(0, TOP_N)
+        .map((r) => ({
+          name: r.name,
+          description: r.description,
+          language: r.language,
+          stargazers_count: r.stargazers_count,
+          html_url: r.html_url,
+          featured: PINNED_SLUGS.includes(r.name.toLowerCase())
+        }));
+      writeCache(repos);
+      renderRepos(repos);
+    } catch (err) {
+      // Fallback: garder au moins Quorum visible si l'API échou (offline, rate-limit)
+      renderRepos([{
+        name: 'quorum',
+        description: 'Outil de revue de code par consensus multi-LLM. Un diff Git envoyé à plusieurs modèles (Claude, Gemini, Codex, Ollama…) — seuls les retours convergents sont remontés. TypeScript, Bun.',
+        language: 'TypeScript',
+        stargazers_count: 2,
+        html_url: 'https://github.com/S1933/quorum',
+        featured: true
+      }]);
+    }
+  }
+
+  loadProjects();
 
   /* ── Agent skills (registry S1933/skills) ── */
   const ROLE_LABELS = {
